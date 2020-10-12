@@ -1,0 +1,305 @@
+							1. CREATING AIRFOILS 
+
+1)Enter the number of airfoils to be created (input in next line):  
+3
+2)Enter the NACA Foil numbers seperated by space(4 or 5 Digits):
+0009 0008 2314 
+3)Enter the number of panels for the foils in respective order seperated by space:
+100 100 100
+4)How many Airfoils to be loaded from your PC?
+2
+5)Enter the .dat file path for all your foils you wish to be added in XFLR5 seperated by space:(Save all on Desktop)
+"C:\Users\hp\Desktop\XFLR5automation\Schulic0003.dat" "C:\Users\hp\Desktop\XFLR5automation\Schulich0002.dat" "C:\Users\hp\Desktop\XFLR5automation\Schulic0004.dat" "C:\Users\hp\Desktop\XFLR5automation\Haskyne0003.dat" 
+6)Enter Plane names seperated by space:
+Schulic0003 Schulich0002 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						2. AIRFOIL ANALYSIS
+
+1)Do you wish to analyze All Foils(y/n)?
+n
+2)Enter the Foil name(s) (For Loaded Foils) or Foil number(s) (For NACA Foils) exactly as entered in MODULE 1 for Analysis:	//IGNORE IF CHOSE ALL
+Schulic0003 0009 2314
+3)Enter Reynolds Min value:
+100000
+4)Enter Reynolds Max value:
+150000
+5)Enter Reynolds Increment value:
+10000
+6)Enter Mach value:
+0.0
+7)Enter NCrit value:
+9.0
+8)Enter Top Transition location(x/c):
+1.00
+9)Enter Bottem Transition location(x/c):
+1.00	
+8)Specify Alpha or CL (Enter a or c)?
+c
+9)Enter Alpha/CL Min value:
+-5
+10)Enter Alpha/CL Max value:
+10
+11)Enter Alpha/CL increment value:
+0.5
+
+
+
+
+
+
+
+
+
+
+
+
+							3. CREATING PLANE
+
+1)Enter the number of columns required to fill Main Wing Details(2/3/4):
+3
+2)Enter the number of columns required to fill Elevator Details(2/3/4):
+2
+3)Enter the number of columns required to fill Fin Details(2/3/4):
+2
+4)Enter a name for the Plane: 
+NightHawk
+5)Enter Mass for Main Wing (Plane inertia menu):
+20
+6)Enter Mass for Elevator (Plane inertia menu):
+0
+7)Enter Mass for Fin  (Plane inertia menu):
+0
+8)Enter x for Elevator:
+1.910
+9)Enter z for Elevator:
+0
+10)Enter Tilt angle for Elevator:
+1.510
+11)Enter x for Fin:
+1.950
+12)Enter 10 parameters to fill Main Wing table column 1 (In the following sequence seperated by space):
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+0 0.722 0 0 0 Schulich0002 13 2 12 4
+13)Enter 10 parameters to fill Main Wing table column 2 (In the following sequence seperated by space):
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+0.745 0.722 0 0 0 Schulich0002 13 2 12 3
+14)Enter 10 parameters to fill Main Wing table column 3 (In the following sequence seperated by space):	//IGNORE IF NOT REQUIRED
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+1.419 0.282 0 0 0 Schulich0002 0 0 0 0
+15)Enter 10 parameters to fill Main Wing table column 4 (In the following sequence seperated by space):	//IGNORE IF NOT REQUIRED
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+
+16)Enter 10 parameters to fill Elevator table column 1 (In the following sequence seperated by space):
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+0 0.4 0 0 0 0009 13 2 19 4
+17)Enter 10 parameters to fill Elevator table column 2 (In the following sequence seperated by space):
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+0.681 0.280 0.1 0 0 0009 13 1 5 1
+18)Enter 10 parameters to fill Elevator table column 3 (In the following sequence seperated by space):	//IGNORE IF NOT REQUIRED
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+
+19)Enter 10 parameters to fill Elevator table column 4 (In the following sequence seperated by space):	//IGNORE IF NOT REQUIRED
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+
+20)Enter 10 parameters to fill Fin table column 1 (In the following sequence seperated by space):
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+0 0.38 0 0 0 0009 13 2 19 2
+21)Enter 10 parameters to fill Fin table column 2 (In the following sequence seperated by space):
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+0.755 0.114 0.35 0 0 0009 13 2 5 1
+22)Enter 10 parameters to fill Fin table column 3 (In the following sequence seperated by space):	//IGNORE IF NOT REQUIRED
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+
+23)Enter 10 parameters to fill Fin table column 4 (In the following sequence seperated by space):	//IGNORE IF NOT REQUIRED
+  (y(m) Chord Offset Dihedral Twist Foil_name X-panel X-dist Y-panel)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+
+						         4. FLIGHT ANALYSIS
+
+1)Choose Type of analysis? (Enter 1/2/4/5):
+4
+2)Enter Free Stream Speed:(Option depends on your choosen Type)		//Ignore if not required
+10
+3)Enter alpha:(Option depends on your choosen Type)			//Ignore if not required
+0
+4)Enter beta:(Option depends on your choosen Type)			//Ignore if not required
+0
+5)Viscous Check box ON in analysis menu (y or n)?
+n
+5)Plane Inertia checkbox ON in inerta menu (y or n)?
+n
+6)Enter Plane mass(kg):							//Ignore if not required
+45
+7)Enter X_CoG(m):							//Ignore if not required
+0.588
+8)Enter Z_CoG(m):							//Ignore if not required
+0.034
+9)Select (Wing Platform (1) or Wing Platform projected on xy plane (2) or User defined (3)) for Ref. dimesions menu (enter 1/2/3):
+3
+10)Enter Ref. area (Only if you chose User defined):			//Ignore if not required
+1.752
+11)Enter Ref. span length (Only if you chose User defined):		//Ignore if not required
+2.838
+12)Enter Ref. cord length (Only if you chose User defined):		//Ignore if not required
+0.649
+13)Choose international or imperial for Aero Data menu (enter int or imp):
+imp
+14)Enter value of Rho (kg/m^3):
+1.225
+15)Enter value of Mu (m^2/s) in scientific notation (ex: 1.5e-05):
+1.5e-05
+16)Ground effect checkbox ON in aero data menu (y or n)?
+n
+17)Enter height (if chose ON):						//Ignore if not required
+0.0
+18)Enter Extra Area(m^2) for Extra drag table in the following format:
+   (Extra0 Extra1 Extra2 Extra3)
+0.0 0.0 0.0 0.0
+19)Enter Extra drag coeff. for EXtra drag table in the following format:
+   (Extra0 Extra1 Extra2 Extra3)
+0.0 0.0 0.0 0.0
+18)Sequence ON or OFF(y/n)?
+y
+19)Enter Start value:
+0
+20)Enter End value:
+5
+21)Enter increment value:
+0.5
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+								5. STABILITY ANALYSIS
+
+1)Viscous Anlaysis check box ON in analysis menu(y/n)?
+n
+2)Enter Beta value for flight altitude:
+0.0
+3)Enter Phi value for flight altitude:
+0.0
+4)Select (Wing Platform (1) or Wing Platform projected on xy plane (2) or Manual input (3)) for Ref. dimesions menu (enter 1/2/3):
+3
+5)Enter Ref. area (Only if you chose Manual input):			//Ignore if not required
+0.0
+6)Enter Ref. span length (Only if you chose Manual input):		//Ignore if not required
+0.0
+7)Enter Ref. cord length (Only if you chose Manual input):		//Ignore if not required
+0.649
+8)Use plane inertia check box ON in Mass and inertia menu(y/n)?
+y
+9)Enter mean value of the following inertia parameters (in the following format seperated by space):  
+  (Mass CoG_x CoG_y Ixx Iyy Izz Ixz)
+1.0 1.0 1.0 1.0 1.0 1.0 1.0
+10)Enter Gain(unit/ctrl) of the following inertia parameters (in the following format seperated by space):  
+  (Mass CoG_x CoG_y Ixx Iyy Izz Ixz)
+1.0 3.0 4.0 5.0 6.0 0.0 0.0
+11)Enter Gain(°/ctrl) for control parameters (in the following format seperated by space):
+  (Wing_Tilt Elevator_Tilt)
+0.0 0.0
+12)Choose international or imperial for Air Data menu (enter int or imp):
+int
+13)Enter the value of Rho:
+631.0
+14)Enter the value of Mu:
+1.399e-06
+15)Enter Extra Area(m^2) for Extra drag table in the following format:
+   (Extra0 Extra1 Extra2 Extra3)
+0.0 0.0 0.0 0.0
+16)Enter Extra drag coeff. for EXtra drag table in the following format:
+   (Extra0 Extra1 Extra2 Extra3)
+0.0 0.0 0.0 0.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
