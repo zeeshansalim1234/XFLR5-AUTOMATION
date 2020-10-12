@@ -45,10 +45,10 @@ This is a python based automation script which completely automates all of the f
   * Do not change the orientation of the file by adding or deleting lines between any input (Working to improve this issue).
   
   ### 3. Fail Safe:
-  * If the code does not run as expected or you want to terminate it for any particular reason, just move the cursor to any of the 4 corners of the screen.
+  * If the code does not run as expected or you wish to terminate it for any particular reason, just move the cursor to any of the 4 corners of the screen.
   
   ### 4. Running the script:
-  * The code has been divided into 5 individual modules. Run modules one-by-one depending on the task you want to perform.
+  * The code has been divided into 5 individual modules. Run modules one-by-one depending on the task you wish to perform.
   
  ## Contact
  If facing any difficulties using the script or to suggest improvements feel free to contact at: [instagram](https://www.instagram.com/zxxshan)
