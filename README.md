@@ -1,6 +1,6 @@
 # PYTHON SCRIPT FOR XFLR5 AUTOMATION
 
-<img src="https://user-images.githubusercontent.com/59512700/95731067-462f2d00-0c3c-11eb-9f2b-ef900a707ccf.gif" width="800" height="400">
+<img src="https://user-images.githubusercontent.com/59512700/95731067-462f2d00-0c3c-11eb-9f2b-ef900a707ccf.gif" width="400" height="300">
 
 ## Description
 
