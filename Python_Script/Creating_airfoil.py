@@ -38,39 +38,56 @@ print("INPUTS:")
 print(array_inputs)
 print(loadingfoil)
 
-time.sleep(5)
+time.sleep(0.5)
+pg.getWindowsWithTitle("xflr5 v6.47")[0].restore()  # start XFLR5
+
+pg.keyDown('alt')                                   # for full screen
+pg.press(' ')
+pg.press('x')
+pg.keyUp('alt')
+
+time.sleep(1)
 
 def createfoil(i,stopper):
 
 
     """--------------------------------------------LOADING FOIL------------------------------------------------------"""
 
+
     if(int(loadingfoil[0])!=0 and stopper!=1):            # For loading foil
 
         for j in range(0,int(loadingfoil[0])):
 
             time.sleep(0.5)
+            pg.hotkey('ctrl','o')
+
+            """
             pg.click(14, 51)            # files
 
             time.sleep(0.2)
-            pg.click(172,119)           # Open
+            pg.click(172,119)           # Open"""
 
             time.sleep(1)
             iw0 = pg.getWindowsWithTitle('Open File')     # To assure window is at same location for all users
             iw0[0].size=(960,720)
             iw0[0].topleft=(0,35)
 
-            time.sleep(1)
-            pg.click(765, 108)          # Searchbar
-            time.sleep(0.5)
+            """time.sleep(1.5)
+            pg.click(765, 108)          # Searchbar"""
+
+            time.sleep(2)
+            pg.hotkey('ctrl', 'f')
+
+            time.sleep(1.5)
             pg.typewrite(loadingfoil[1][j])
 
             time.sleep(1)
-            pg.typewrite(["down"])
             pg.typewrite(["enter"])
 
-            time.sleep(1)
-            pg.click(360, 287)
+            time.sleep(2)
+            pg.hotkey('tab','tab')
+            pg.hotkey('pageup')
+            """pg.click(303, 209)"""
 
             time.sleep(1)
             pg.typewrite(["enter"])
@@ -82,6 +99,10 @@ def createfoil(i,stopper):
     if(numfoils>0):                  #For creating new foils
 
         time.sleep(0.2)
+        pg.hotkey('Ctrl','5')
+        pg.hotkey('Fn', 'F5')
+
+        """
         pg.click(14,51)               #files
 
         time.sleep(0.2)
@@ -91,33 +112,58 @@ def createfoil(i,stopper):
         pg.click(176,47)              #Design foil
 
         time.sleep(0.2)
-        pg.click(220,412)             #Naca foils
+        pg.click(220,412)             #Naca foils"""
 
+        """-------------------------------------NACA FOIL MENU--------------------------------------------------"""
+
+        time.sleep(0.2)
+        pg.click(button='right')
+
+        for k in range(0,3):
+            pg.typewrite(["down"])
+
+        pg.typewrite(["right"])
+
+        for l in range(0,10):
+            pg.typewrite(["down"])
+
+        pg.typewrite(["enter"])
+
+        """------------------------------------------------X-----------------------------------------------------"""
+
+        time.sleep(0.5)
         fw = pg.getWindowsWithTitle('NACA Foils')       #To Find the window
 
         fw[0].size=(371,251)             #To assure window is placed at same spot for everyone
         fw[0].topleft=(766,390)
 
         time.sleep(0.2)
-        pg.click(1086,465,clicks=2)   #Naca foil no(4 or 5 digits)
+        pg.hotkey('ctrl','a')
+        """pg.click(1086,465,clicks=2)   #Naca foil no(4 or 5 digits)"""
         pg.typewrite(array_inputs[1][i])
 
         for i in range(0,3):
             pg.typewrite(["enter"])
 
         time.sleep(0.2)
+        pg.hotkey('fn','F7')
+
+        """
         pg.click(115,49)              #Foil menu bar
 
         time.sleep(0.2)
-        pg.click(185,86)              #Foil management
+        pg.click(185,86)              #Foil management """
 
+        time.sleep(0.2)
         iw = pg.getWindowsWithTitle('Foil Management')
 
         iw[0].size=(975,280)
         iw[0].topleft=(464,375)
 
         time.sleep(0.2)
-        pg.click(1391,400)            #Close foil management
+        pg.press('escape')
+
+        """
 
         time.sleep(0.2)
         pg.click(115,49)              #Foil menu bar
@@ -126,7 +172,14 @@ def createfoil(i,stopper):
         pg.click(173,121)             #Current foil->
 
         time.sleep(0.2)
-        pg.click(478,129)             #Set style
+        pg.click(478,129)             #Set style"""
+
+        time.sleep(0.2)
+        pg.click(button='right')
+
+        pg.typewrite(["down"])
+        pg.typewrite(["right"])
+        pg.typewrite(["enter"])
 
         fw1 = pg.getWindowsWithTitle('Line Picker')  # To Find the window
 
@@ -149,12 +202,15 @@ def createfoil(i,stopper):
         for i in range(0,2):
             pg.typewrite(["enter"])
 
-        time.sleep(0.2)
+        time.sleep(0.1)
+        pg.hotkey('fn','F3')
+        """
         pg.click(169,44)              #Design menu
 
         time.sleep(0.2)
-        pg.click(244,144)             #refine globally
+        pg.click(244,144)             #refine globally"""
 
+        time.sleep(0.2)
         fw2 = pg.getWindowsWithTitle('Global Panel Refinement')
 
         fw2[0].width = 566                #Places the window at same location for all users
