@@ -11,6 +11,8 @@ nacafoils_names=[]                          # List of all NACA foil names
 loadedfoils_names=[]                        # List of all Loaded foil names
 specificfoils_names=[]                      # List of foils to be analysed
 indices=[]                                  # List of indices of all commen elements in specific and ascending arrays
+num_nacafoils=[]                            # Number of naca foils to be created
+num_loadedfoils=[]                          # Number of loaded foils to be created
 
 """---------------------------------------------------X--------------------------------------------------------------"""
 
@@ -22,7 +24,11 @@ f=file.readlines()
 
 for line in f:
     countline+=1
-    if(countline==6):
+    if(countline==4):
+        num_nacafoils.append(line.strip())
+    elif(countline==10):
+        num_loadedfoils.append(line.strip())
+    elif(countline==6):
         nacafoils_names.append(line.strip())
     elif(countline==14):
         loadedfoils_names.append(line.strip())
@@ -47,7 +53,12 @@ for i in range(0, len(loadedfoils_names)):                       # Arranges all 
             loadedfoils_names[i] = loadedfoils_names[j];
             loadedfoils_names[j] = temp;
 
-ascending_all_foils=loadedfoils_names+nacafoils_names            # List that contains all foil names in Ascending order
+if(num_nacafoils[0]=='0'):
+    ascending_all_foils=loadedfoils_names            # List that contains all foil names in Ascending order
+elif(num_loadedfoils[0]=='0'):
+    ascending_all_foils=nacafoils_names
+else:
+    ascending_all_foils=loadedfoils_names+nacafoils_names
 
 indices = [i for i, item in enumerate(ascending_all_foils) if item in set(specificfoils_names)]   # To find commen indices of commen elements
 
@@ -59,14 +70,23 @@ print("FOIL LIST:",ascending_all_foils)
 print("FOIL TO BE ANALYZED:",specificfoils_names)
 print("INDICES:",indices)
 
+time.sleep(0.5)
+pg.getWindowsWithTitle("xflr5 v6.47")[0].restore()
+time.sleep(1)
+
 def analyzefoil():
 
-    time.sleep(5)                                                 # Timer to switch to XFLR5 window
+
+    """
     pg.click(241,45)                                              # Analysis menu bar
 
     time.sleep(0.2)
-    pg.click(367,142)                                             # Multi threaded batch analysis
+    pg.click(367,142)                                             # Multi threaded batch analysis """
 
+    time.sleep(0.5)
+    pg.hotkey('ctrl','F6');
+
+    time.sleep(0.2)
     fw = pg.getWindowsWithTitle('Multi-threaded batch analysis')  # Finds the window
 
     fw[0].size = (1294, 708)                                      # To assure window is placed at same spot for everyone
@@ -74,42 +94,69 @@ def analyzefoil():
 
     """------------------------------------------FOIL SELECTION------------------------------------------------------"""
 
-    time.sleep(0.2)
-    pg.click(228,131)                                             # Foils list radio button
+    """time.sleep(0.2)
+    pg.click(228,131)                                           # Foils list radio button
 
     time.sleep(0.2)
-    pg.click(482,130)                                           # Foils list (rectangle) button
+    pg.click(482,130)                                           # Foils list (rectangle) button"""
+
+    time.sleep(0.2)
+    pg.typewrite(['right'])
+    pg.typewrite(['tab'])
+    pg.typewrite(['space'])
+    pg.typewrite(['escape'])
+    pg.typewrite(['space'])
 
     fw1 = pg.getWindowsWithTitle('Foil Selection')
 
     fw1[0].size = (408, 431)
     fw1[0].topleft = (455, 164)
 
-    time.sleep(0.2)                                             # Close Analysis
+    """time.sleep(0.2)                                             # Close Analysis
     pg.click(812,185)
 
     time.sleep(0.2)
-    pg.click(482,130)                                           # Doing this to deselect default options
+    pg.click(482,130)                                           # Doing this to deselect default options"""
 
     if(array_inputs[0]=="y" or array_inputs[0]=="Y"):           # Analyzing All foils
 
-        time.sleep(0.2)
+        """time.sleep(0.2)
         pg.click(778,544)
 
         time.sleep(0.2)
-        pg.click(542,554)
+        pg.click(542,554)"""
+        time.sleep(0.2)
+        for i in range(0,3):
+            pg.typewrite(['tab'])
+        pg.typewrite(['space'])
+        pg.typewrite(['tab'])
+
+        time.sleep(0.2)
+        pg.typewrite(['enter'])
+
+
 
     else:
 
         for i in range(0,len(indices)):      # Analyzing specific foils
 
-            y=235
+            """y=235
 
             time.sleep(0.2)
             pg.moveTo(669,235)
 
             time.sleep(0.2)                 # Selecting the desired number of airfoils from foils list
-            pg.click(669,y+(30*indices[i]))
+            pg.click(669,y+(30*indices[i]))"""
+            time.sleep(0.2)
+
+            for j in range(0,6):            #Going back to box 1
+                pg.typewrite(['up'])
+
+            for i in range(0,int(indices[i])):
+                pg.typewrite(['down'])
+
+            pg.typewrite(['space'])
+
 
         pg.typewrite(["enter"])
 
@@ -118,6 +165,15 @@ def analyzefoil():
     """-----------------------------------------------PARAMETERS-----------------------------------------------------"""
 
     time.sleep(0.2)
+    pg.typewrite(['tab'])              #Range
+    pg.typewrite(['space'])
+
+    for k in range(2,9):
+
+        pg.typewrite(['tab'])
+        pg.typewrite(array_inputs[k])
+
+    """time.sleep(0.2)
     pg.click(239, 284, clicks=3)  # Reynolds Min
     pg.typewrite(array_inputs[2])
 
@@ -143,18 +199,22 @@ def analyzefoil():
 
     time.sleep(0.2)
     pg.click(505, 470, clicks=3)  # Bottem Transition
-    pg.typewrite(array_inputs[8])
+    pg.typewrite(array_inputs[8])"""
+
 
     if(array_inputs[9]=='a'):     # Alpha or CL radio button
 
-        time.sleep(0.2)
-        pg.click(132,549)
+        time.sleep(0.1)
+        pg.press('tab',presses=2)
 
     else:
 
-        time.sleep(0.2)
-        pg.click(217,551)
+        time.sleep(0.1)
+        pg.press('tab')
+        pg.press('right')
 
+
+    """
     time.sleep(0.2)
     pg.click(230, 610,clicks=3)         # Alpha Min
     pg.typewrite(array_inputs[10])
@@ -168,12 +228,22 @@ def analyzefoil():
     pg.typewrite(array_inputs[12])
 
     time.sleep(0.2)
-    pg.click(316,682)                   # analyze button
+    pg.click(316,682)                   # analyze button"""
+
+    for l in range(10,13):
+
+        pg.typewrite(['tab'])
+        pg.typewrite(array_inputs[l])
+
+    pg.press('enter',presses=2)
+
 
     """-------------------------------------------END OF FUNCTION----------------------------------------------------"""
 
 analyzefoil()
 
 file.close()
+
+
 
 
