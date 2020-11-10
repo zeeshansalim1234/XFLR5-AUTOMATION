@@ -96,6 +96,8 @@ def createfoil(i,stopper):
 
     """-----------------------------------------------CREATING AIRFOIL-----------------------------------------------"""
 
+    pg.moveTo(1050,550)
+    
     if(numfoils>0):                  #For creating new foils
 
         time.sleep(0.2)
