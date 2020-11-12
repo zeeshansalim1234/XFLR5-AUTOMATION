@@ -191,7 +191,7 @@ def createfoil(i,stopper):
         pg.typewrite(loadingfoil[1])
 
         time.sleep(1)
-        pg.typewrite(["enter"])
+        pg.press('enter')
 
         for k in range(0,2):
 
