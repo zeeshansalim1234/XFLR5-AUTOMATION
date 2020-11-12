@@ -27,9 +27,9 @@ def save_info():
 
     for k in range(3,14,2):
 
-        if(arr_gui[tracker]!=''):
+        if (arr_gui[tracker] != ''):
             lines[k] =str(arr_gui[tracker])+'\n'
-            
+
         tracker+=1
 
     f.close()
@@ -37,6 +37,7 @@ def save_info():
     lines = ''.join([str(elem) for elem in lines])
 
     f = open("XFLR5inputs.txt", "w")
+
 
     f.writelines(lines)
     f.close()
@@ -71,7 +72,7 @@ secondentry_text = Label(text="NACA foil number")
 thirdentry_text = Label(text="Nuber of Panels")
 fourthentry_text =Label(text="Number of airfoils to be loaded")
 fifthentry_text =Label(text="Address of Foil on PC")
-sixthentry_text = Label(text="Plane names")
+sixthentry_text = Label(text="Airfoil names")
 
 
 firstentry_text.place(x=15,y=110)
@@ -208,7 +209,7 @@ def createfoil(i,stopper):
 
     """-----------------------------------------------CREATING AIRFOIL-----------------------------------------------"""
 
-    pg.moveTo(1050,550)              # To make sure the cursor is on the XFLR5 window
+    pg.moveTo(500,550)              # To make sure the cursor is on the XFLR5 window
 
     if(numfoils>0):                  # For creating new foils
 
@@ -232,7 +233,7 @@ def createfoil(i,stopper):
 
             pg.typewrite(["down"])
 
-        pg.typewrite(["enter"])
+        pg.press('enter')
 
         time.sleep(1)
         fw = pg.getWindowsWithTitle('NACA Foils')  # To Find the window
@@ -240,12 +241,12 @@ def createfoil(i,stopper):
         fw[0].size = (371, 251)                    # To assure window is placed at same spot for everyone
         fw[0].topleft = (766, 390)
 
-        time.sleep(0.2)
+        time.sleep(0.1)
         pg.hotkey('ctrl', 'a')                     # To Highlight the text
 
         pg.typewrite(array_inputs[1][i])
 
-        for i in range(0,4):
+        for j in range(0,4):
             pg.typewrite(["enter"])
 
         """------------------------------------------------X-----------------------------------------------------"""
@@ -288,7 +289,7 @@ def createfoil(i,stopper):
         time.sleep(0.1)
         pg.click(x_color,407)         # Choosing a different color for every foil
 
-        for i in range(0,2):
+        for j in range(0,2):
             pg.typewrite(["enter"])
 
         time.sleep(0.1)
@@ -303,7 +304,8 @@ def createfoil(i,stopper):
 
         pg.typewrite(array_inputs[2][i])       # entering number of panels
 
-        for i in range(0,5):
+
+        for j in range(0,5):
             pg.typewrite(["enter"])
 
     """------------------------------------------END OF FUNCTION-----------------------------------------------------"""
