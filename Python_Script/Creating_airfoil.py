@@ -123,7 +123,7 @@ def createfoil(i,stopper):
 
         pg.typewrite(array_inputs[1][i])
 
-        for i in range(0,3):
+        for i in range(0,4):
             pg.typewrite(["enter"])
 
         """------------------------------------------------X-----------------------------------------------------"""
