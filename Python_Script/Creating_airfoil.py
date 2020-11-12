@@ -1,6 +1,126 @@
 import time,pyautogui as pg
+from tkinter import *
+from PIL import ImageTk,Image
 
 """------------------------------------THIS IS THE MODULE FOR CREATING AIRFOILS--------------------------------------"""
+
+
+"""--------------------------------------------------GUI-------------------------------------------------------------"""
+
+arr_gui=[]
+
+def save_info():
+
+    arr_gui.append(firstentry.get())
+    arr_gui.append(secondentry.get())
+    arr_gui.append(thirdentry.get())
+    arr_gui.append(fourthentry.get())
+    arr_gui.append(fifthentry.get())
+    arr_gui.append(sixthentry.get())
+
+    print(arr_gui)
+
+    f = open("XFLR5inputs.txt", "r")
+    lines = f.readlines()
+
+    tracker=0
+
+    for k in range(3,14,2):
+
+        lines[k] =str(arr_gui[tracker])+'\n'
+        tracker+=1
+
+    f.close()
+
+    lines = ''.join([str(elem) for elem in lines])
+
+    f = open("XFLR5inputs.txt", "w")
+
+    f.writelines(lines)
+    f.close()
+
+
+app = Tk()
+
+app.geometry("1900x1500")
+
+app.title("XFLR5 AUTOMATION")
+
+app.configure(background="#F7F7F7")
+
+heading = Label(text="CREATE AIRFOILS",fg="white",bg="black",font="Helvetica 13 bold italic",width="500",height="3")
+
+heading.pack()
+
+
+img1 = ImageTk.PhotoImage(Image.open('university_logo.png'))
+label=Label(image=img1,bg="#F7F7F7")
+label.pack()
+label.place(x=1700,y=820)
+
+img2 = ImageTk.PhotoImage(Image.open('SAED_logo.jpg'))
+label=Label(image=img2,bg="#F7F7F7")
+label.pack()
+label.place(x=1350,y=870)
+
+
+firstentry_text = Label(text="Number of airfoils to be created")
+secondentry_text = Label(text="NACA foil number")
+thirdentry_text = Label(text="Nuber of Panels")
+fourthentry_text =Label(text="Number of airfoils to be loaded")
+fifthentry_text =Label(text="Address of Foil on PC")
+sixthentry_text = Label(text="Plane names")
+
+
+firstentry_text.place(x=15,y=110)
+secondentry_text.place(x=15,y=200)
+thirdentry_text.place(x=15,y=290)
+fourthentry_text.place(x=15,y=380)
+fifthentry_text.place(x=15,y=470)
+sixthentry_text.place(x=15,y=560)
+
+
+firstentry = StringVar()
+secondentry = StringVar()
+thirdentry = StringVar()
+fourthentry= StringVar()
+fifthentry= StringVar()
+sixthentry= StringVar()
+
+
+firstentry_enter = Entry(textvariable=firstentry,width="30")
+secondentry_enter = Entry(textvariable=secondentry,width="30")
+thirdentry_enter = Entry(textvariable=thirdentry,width="30")
+fourthentry_enter = Entry(textvariable=fourthentry,width="30")
+fifthentry_enter = Entry(textvariable=fifthentry,width="30")
+sixthentry_enter = Entry(textvariable=sixthentry,width="30")
+
+
+firstentry_enter.place(x=15,y=140)
+secondentry_enter.place(x=15,y=230)
+thirdentry_enter.place(x=15,y=320)
+fourthentry_enter.place(x=15,y=410)
+fifthentry_enter.place(x=15,y=500)
+sixthentry_enter.place(x=15,y=590)
+
+
+
+button1 = Button(app,text="Save",command=save_info,width="30",height="2",bg="lightblue")
+button1.place(x=15,y=900)
+
+
+
+
+
+mainloop()
+
+
+
+"""----------------------------------------------------X-------------------------------------------------------------"""
+
+
+
+
 
 """---------------------------------------------READING TEXT FILE----------------------------------------------------"""
 
@@ -75,7 +195,7 @@ def createfoil(i,stopper):
             time.sleep(0.2)
             pg.hotkey('shift','tab')
 
-        pg.hotkey('ctrl','a')                          # To select all files in the directory
+        pg.hotkey('ctrl','a')                           # To select all files in the directory
 
 
         time.sleep(1)
@@ -98,7 +218,7 @@ def createfoil(i,stopper):
         """-------------------------------------NACA FOIL MENU--------------------------------------------------"""
 
         time.sleep(0.5)
-        pg.click(button='right')                   # accessing the Naca Foils menu
+        pg.click(button='right')            # accessing the Naca Foils menu
 
         for k in range(0,3):
 
@@ -130,12 +250,12 @@ def createfoil(i,stopper):
 
 
         time.sleep(0.2)
-        pg.hotkey('fn','F7')                               # Open Foil Management
+        pg.hotkey('fn','F7')             # Open Foil Management
 
         time.sleep(0.2)
         iw = pg.getWindowsWithTitle('Foil Management')     # To Find the window
 
-        iw[0].size=(975,280)                               # To assure window is placed at same spot for everyone
+        iw[0].size=(975,280)               # To assure window is placed at same spot for everyone
         iw[0].topleft=(464,375)
 
         time.sleep(0.2)
@@ -175,7 +295,7 @@ def createfoil(i,stopper):
         time.sleep(0.2)
         fw2 = pg.getWindowsWithTitle('Global Panel Refinement')
 
-        fw2[0].width = 566                     # Places the window at same location for all users
+        fw2[0].width = 566                # Places the window at same location for all users
         fw2[0].height = 326
         fw2[0].topleft = (668, 352)
 
