@@ -27,7 +27,7 @@ def save_info():
 
     for k in range(3,14,2):
 
-        if(arr_gui[x]!=''):
+        if(arr_gui[tracker]!=''):
             lines[k] =str(arr_gui[tracker])+'\n'
             
         tracker+=1
