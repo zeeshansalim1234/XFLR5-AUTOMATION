@@ -18,11 +18,11 @@ num_loadedfoils=[]                          # Number of loaded foils to be creat
 
 """-----------------------------------------------INPUT TEXT FILE----------------------------------------------------"""
 
-file=open("XFLR5inputs.txt","r")
+file=open("XFLR5inputs.txt","r")             # Open Text File in read mode
 f=file.readlines()
 
 
-for line in f:
+for line in f:                               # Reading required input line by line
     countline+=1
     if(countline==4):
         num_nacafoils.append(line.strip())
@@ -35,11 +35,11 @@ for line in f:
     elif(countline>40 and countline<66 and countline%2!=0):
         array_inputs.append(line.strip())
 
-nacafoils_names=nacafoils_names[0].split(' ')
-loadedfoils_names=loadedfoils_names[0].split(' ')
-specificfoils_names=array_inputs[1].split(' ')
+nacafoils_names=nacafoils_names[0].split(' ')                   # For converting to 2D array
+loadedfoils_names=loadedfoils_names[0].split(' ')               # For converting to 2D array
+specificfoils_names=array_inputs[1].split(' ')                  # For converting to 2D array
 
-for i in range(0, len(nacafoils_names)):                         # Arranges all NACA foil names in ascending order
+for i in range(0, len(nacafoils_names)):                        # Arranges all NACA foil names in ascending order
     for j in range(i+1, len(nacafoils_names)):
         if(nacafoils_names[i] > nacafoils_names[j]):
             temp = nacafoils_names[i];
@@ -53,14 +53,14 @@ for i in range(0, len(loadedfoils_names)):                       # Arranges all 
             loadedfoils_names[i] = loadedfoils_names[j];
             loadedfoils_names[j] = temp;
 
-if(num_nacafoils[0]=='0'):
-    ascending_all_foils=loadedfoils_names            # List that contains all foil names in Ascending order
-elif(num_loadedfoils[0]=='0'):
+if(num_nacafoils[0]=='0'):                      #if only loaded foils (will arrange those in ascending order)
+    ascending_all_foils=loadedfoils_names
+elif(num_loadedfoils[0]=='0'):                  #if only created Naca foils (will arrange those in ascending order)
     ascending_all_foils=nacafoils_names
 else:
-    ascending_all_foils=loadedfoils_names+nacafoils_names
+    ascending_all_foils=loadedfoils_names+nacafoils_names     #if user loaded and created foils (ascending order)
 
-indices = [i for i, item in enumerate(ascending_all_foils) if item in set(specificfoils_names)]   # To find commen indices of commen elements
+indices = [i for i, item in enumerate(ascending_all_foils) if item in set(specificfoils_names)]   # To find indices of commen elements
 
 """----------------------------------------------------X-------------------------------------------------------------"""
 
@@ -71,20 +71,14 @@ print("FOIL TO BE ANALYZED:",specificfoils_names)
 print("INDICES:",indices)
 
 time.sleep(0.5)
-pg.getWindowsWithTitle("xflr5 v6.47")[0].restore()
+pg.getWindowsWithTitle("xflr5 v6.47")[0].restore()         #To open XFLR5 window
 time.sleep(1)
 
 def analyzefoil():
 
 
-    """
-    pg.click(241,45)                                              # Analysis menu bar
-
-    time.sleep(0.2)
-    pg.click(367,142)                                             # Multi threaded batch analysis """
-
     time.sleep(0.5)
-    pg.hotkey('ctrl','F6');
+    pg.hotkey('ctrl','F6')            # Open Multi-threaded batch analysis menu
 
     time.sleep(0.2)
     fw = pg.getWindowsWithTitle('Multi-threaded batch analysis')  # Finds the window
@@ -94,11 +88,6 @@ def analyzefoil():
 
     """------------------------------------------FOIL SELECTION------------------------------------------------------"""
 
-    """time.sleep(0.2)
-    pg.click(228,131)                                           # Foils list radio button
-
-    time.sleep(0.2)
-    pg.click(482,130)                                           # Foils list (rectangle) button"""
 
     time.sleep(0.2)
     pg.typewrite(['right'])
@@ -112,22 +101,14 @@ def analyzefoil():
     fw1[0].size = (408, 431)
     fw1[0].topleft = (455, 164)
 
-    """time.sleep(0.2)                                             # Close Analysis
-    pg.click(812,185)
-
-    time.sleep(0.2)
-    pg.click(482,130)                                           # Doing this to deselect default options"""
 
     if(array_inputs[0]=="y" or array_inputs[0]=="Y"):           # Analyzing All foils
 
-        """time.sleep(0.2)
-        pg.click(778,544)
+        time.sleep(0.2)
 
-        time.sleep(0.2)
-        pg.click(542,554)"""
-        time.sleep(0.2)
         for i in range(0,3):
             pg.typewrite(['tab'])
+
         pg.typewrite(['space'])
         pg.typewrite(['tab'])
 
@@ -138,18 +119,11 @@ def analyzefoil():
 
     else:
 
-        for i in range(0,len(indices)):      # Analyzing specific foils
-
-            """y=235
+        for i in range(0,len(indices)):     # Analyzing specific foils provided by user
 
             time.sleep(0.2)
-            pg.moveTo(669,235)
 
-            time.sleep(0.2)                 # Selecting the desired number of airfoils from foils list
-            pg.click(669,y+(30*indices[i]))"""
-            time.sleep(0.2)
-
-            for j in range(0,6):            #Going back to box 1
+            for j in range(0,6):            # Going back to box 1
                 pg.typewrite(['up'])
 
             for i in range(0,int(indices[i])):
@@ -165,84 +139,42 @@ def analyzefoil():
     """-----------------------------------------------PARAMETERS-----------------------------------------------------"""
 
     time.sleep(0.2)
-    pg.typewrite(['tab'])              #Range
+    pg.typewrite(['tab'])               # Choosing range
     pg.typewrite(['space'])
 
     for k in range(2,9):
 
-        pg.typewrite(['tab'])
+        pg.typewrite(['tab'])           # Entering parameters
         pg.typewrite(array_inputs[k])
 
-    """time.sleep(0.2)
-    pg.click(239, 284, clicks=3)  # Reynolds Min
-    pg.typewrite(array_inputs[2])
 
-    time.sleep(0.2)
-    pg.click(356, 284, clicks=3)  # Reynolds Max
-    pg.typewrite(array_inputs[3])
-
-    time.sleep(0.2)
-    pg.click(494, 284, clicks=3)  # Reynolds increment
-    pg.typewrite(array_inputs[4])
-
-    time.sleep(0.2)
-    pg.click(239, 320, clicks=3)  # Mach
-    pg.typewrite(array_inputs[5])
-
-    time.sleep(0.2)
-    pg.click(239, 355, clicks=3)  # NCrit
-    pg.typewrite(array_inputs[6])
-
-    time.sleep(0.2)
-    pg.click(505, 437, clicks=3)  # Top Transition
-    pg.typewrite(array_inputs[7])
-
-    time.sleep(0.2)
-    pg.click(505, 470, clicks=3)  # Bottem Transition
-    pg.typewrite(array_inputs[8])"""
-
-
-    if(array_inputs[9]=='a'):     # Alpha or CL radio button
+    if(array_inputs[9]=='a'):           # Chooses Alpha
 
         time.sleep(0.1)
         pg.press('tab',presses=2)
 
-    else:
+    else:                               # Chooses Cl
 
         time.sleep(0.1)
         pg.press('tab')
         pg.press('right')
 
 
-    """
-    time.sleep(0.2)
-    pg.click(230, 610,clicks=3)         # Alpha Min
-    pg.typewrite(array_inputs[10])
-
-    time.sleep(0.2)
-    pg.click(359, 609,clicks=3)         # Alpha Max
-    pg.typewrite(array_inputs[11])
-
-    time.sleep(0.2)
-    pg.click(496,609,clicks=3)          # Alpha increment
-    pg.typewrite(array_inputs[12])
-
-    time.sleep(0.2)
-    pg.click(316,682)                   # analyze button"""
-
     for l in range(10,13):
 
-        pg.typewrite(['tab'])
+        pg.typewrite(['tab'])           # Entering parameters
         pg.typewrite(array_inputs[l])
 
-    pg.press('enter',presses=2)
+    pg.press('enter',presses=2)         # Start analysis
 
 
     """-------------------------------------------END OF FUNCTION----------------------------------------------------"""
 
-analyzefoil()
+analyzefoil()          # Function call
 
-file.close()
+file.close()           # Closing text file
+
+
 
 
 
