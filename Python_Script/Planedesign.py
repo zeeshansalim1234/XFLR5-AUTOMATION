@@ -90,17 +90,6 @@ def planedesign():
 
     time.sleep(1)                    #Timer to switch to XFLR5 window
     pg.hotkey('ctrl','6')
-    """
-    pg.click(14, 51)                 #Files
-
-    time.sleep(0.5)
-    pg.click(249,409)                #Plane and Wing Design 
-
-    time.sleep(0.5)
-    pg.click(125,43)                 #Plane menu bar
-
-    time.sleep(0.5)
-    pg.click(220,82)                 #Define a new plane"""
 
     time.sleep(0.2)
     pg.hotkey('fn','F3')
@@ -113,8 +102,6 @@ def planedesign():
     pg.hotkey('ctrl','a')
     pg.typewrite(array_inputs[3])
 
-    """pg.click(621,160,clicks=3)       #Naming Plane
-    pg.typewrite(array_inputs[3])"""
 
     for l in range(0,20):
 
@@ -124,8 +111,6 @@ def planedesign():
 
     """--------------------------------------CODE TO FILL MAIN WINGS DETAILS IN TABLE--------------------------------"""
 
-    """time.sleep(0.5)
-    pg.click(616,463)                #Main wing : Define"""
 
     time.sleep(1)
     pg.keyDown('alt')  # for full screen
@@ -176,15 +161,17 @@ def planedesign():
                 pg.press('enter')
 
 
-    pg.press('enter',presses=3)             #save main wing table
+
+    for k in range(0,3):            #save main wing table
+
+        time.sleep(0.1)
+        pg.press('enter')
 
 
     """-------------------------------------------------X------------------------------------------------------------"""
 
     """----------------------------------CODE TO FILL ELEVATOR DEATILS TABLE-----------------------------------------"""
 
-    """time.sleep(0.5)
-    pg.click(616,664)                #Elevator : Define"""
 
     time.sleep(0.5)
     pg.press('tab',presses=7)
@@ -215,7 +202,6 @@ def planedesign():
 
                 b = [array_inputs[m][n]]
                 index = [i for i, item in enumerate(ascending_all_foils) if item in set(b)]  # for selecting the desired foil
-                print(index)
 
                 pg.press('space')
                 for p in range(0,index[0]+1):
@@ -237,8 +223,10 @@ def planedesign():
 
                 pg.press('enter')
 
+    for k in range(0, 3):
 
-    pg.press('enter',presses=3)             #save elevator table
+        time.sleep(0.1)
+        pg.press('enter')             #save elevator table
 
 
     """------------------------------------------------X-------------------------------------------------------------"""
@@ -250,7 +238,7 @@ def planedesign():
     time.sleep(0.5)
     pg.press('tab',presses=5)
     pg.press('space')
-    """pg.click(1014,664)                #Elevator : Define"""
+
 
     time.sleep(1)
     pg.keyDown('alt')  # for full screen
@@ -278,7 +266,6 @@ def planedesign():
 
                 b = [array_inputs[m][n]]
                 index = [i for i, item in enumerate(ascending_all_foils) if item in set(b)]  # for selecting the desired foil
-                print(index)
 
                 pg.press('space')
                 for p in range(0, index[0] + 1):
@@ -298,7 +285,10 @@ def planedesign():
 
                 pg.press('enter')
 
-    pg.press('enter', presses=3)  # save fin table
+    for j in range(0, 3):  # save Fin table
+
+        time.sleep(0.1)
+        pg.press('enter')
 
 
     """-------------------------------------END OF FILLING THE TABLE DETAILS-----------------------------------------"""
@@ -311,8 +301,8 @@ def planedesign():
 
     pg.press('space')
 
-    """pg.click(737, 338)  # Plane Inertia"""
 
+    time.sleep(1)
     iw = pg.getWindowsWithTitle('inertia properties')
 
     time.sleep(1)
@@ -329,6 +319,7 @@ def planedesign():
 
     pg.press('space')
 
+    time.sleep(1)
     iw1 = pg.getWindowsWithTitle('inertia properties for Main Wing')
 
     iw1[0].size = (613, 825)  # makes sure window is on same position for all users
@@ -341,14 +332,6 @@ def planedesign():
     pg.typewrite(array_inputs[4])
     pg.press('enter',presses=2)
 
-    """pg.click(850, 260)  # Main Wing"""
-
-    """time.sleep(0.5)
-    pg.click(894, 291, clicks=3)  # Mass Main wing
-    pg.typewrite(array_inputs[4])
-
-    for i in range(0, 2):
-        pg.typewrite(["enter"])"""
 
     """-------------------------------------------------X------------------------------------------------------------"""
 
@@ -358,6 +341,7 @@ def planedesign():
     pg.press('tab')
     pg.press('space')
 
+    time.sleep(1)
     iw2 = pg.getWindowsWithTitle('inertia properties for Elevator')
 
     iw2[0].size = (613, 825)  # makes sure window is on same position for all users
@@ -370,15 +354,6 @@ def planedesign():
     pg.typewrite(array_inputs[5])
     pg.press('enter',presses=2)
 
-    """pg.click(959, 307)  # Elevator
-
-
-    time.sleep(0.5)
-    pg.click(894, 291, clicks=3)  # Mass Elevator
-    pg.typewrite(array_inputs[5])
-
-    for i in range(0, 2):
-        pg.typewrite(["enter"])"""
 
     """-------------------------------------------------X------------------------------------------------------------"""
 
@@ -388,6 +363,7 @@ def planedesign():
     pg.press('tab')
     pg.press('space')
 
+    time.sleep(1)
     iw3 = pg.getWindowsWithTitle('inertia properties for Fin')
 
     iw3[0].size = (613, 825)  # makes sure window is on same position for all users
@@ -406,17 +382,6 @@ def planedesign():
     for i in range(0,3):
         pg.typewrite(['enter'])
 
-    """
-    pg.click(965, 357)  # Fin
-
-    time.sleep(0.5)
-    pg.click(894, 291, clicks=3)  # Mass Fin
-    pg.typewrite(array_inputs[6])
-
-    for i in range(0, 2):
-        pg.typewrite(["enter"])
-
-    pg.click(949, 872)  # save"""
 
     pg.press('tab',presses=9)
 
@@ -431,41 +396,16 @@ def planedesign():
     pg.press('tab',presses=2)
     pg.typewrite(array_inputs[9])
 
-    time.sleep(0.5)
-    pg.press('enter',presses=2)
+    pg.press('enter', presses=3)
 
-    """time.sleep(0.1)
-    pg.click(1278, 665, clicks=3)  # Fin X
-    pg.typewrite(array_inputs[10])
-    pg.typewrite(["enter"])
+    for i in range(0, 3):
 
-    time.sleep(0.1)
-    pg.click(1278, 769, clicks=3)  # Fin Tilt angle
-    pg.typewrite(array_inputs[9])
-    pg.typewrite(["enter"])
+        time.sleep(0.2)
+        pg.press('enter')
 
-    time.sleep(0.5)
-    pg.click(1174, 930)"""
-
-    """
-    time.sleep(0.1)
-    pg.click(863, 663, clicks=3)  # elevator X
-    pg.typewrite(array_inputs[7])
-    pg.typewrite(["enter"])
-
-    time.sleep(0.1)
-    pg.click(864, 702, clicks=3)  # elevator Z
-    pg.typewrite(array_inputs[8])
-    pg.typewrite(["enter"])
-
-    time.sleep(0.1)
-    pg.click(864, 737, clicks=3)  # elevator tilt angle
-    pg.typewrite(array_inputs[9])
-    pg.typewrite(["enter"])"""
 
     """---------------------------------------------END OF FUNCTION--------------------------------------------------"""
 
 planedesign()
 
 file.close()
-
