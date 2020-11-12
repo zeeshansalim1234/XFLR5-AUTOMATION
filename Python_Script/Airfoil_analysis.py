@@ -1,4 +1,7 @@
 import time,pyautogui as pg
+from tkinter import *
+from PIL import ImageTk,Image
+
 
 """----------------------------------THIS IS THE MODULE FOR ANALYSING AIRFOILS---------------------------------------"""
 
@@ -15,6 +18,169 @@ num_nacafoils=[]                            # Number of naca foils to be created
 num_loadedfoils=[]                          # Number of loaded foils to be created
 
 """---------------------------------------------------X--------------------------------------------------------------"""
+
+"""----------------------------------------------------GUI-----------------------------------------------------------"""
+
+
+from tkinter import *
+from PIL import ImageTk,Image
+
+arr_gui=[]
+
+def save_info():
+
+    arr_gui.append(firstentry.get())
+    arr_gui.append(secondentry.get())
+    arr_gui.append(thirdentry.get())
+    arr_gui.append(fourthentry.get())
+    arr_gui.append(fifthentry.get())
+    arr_gui.append(sixthentry.get())
+    arr_gui.append(seventhentry.get())
+    arr_gui.append(eighthentry.get())
+    arr_gui.append(ninthentry.get())
+    arr_gui.append(tenthentry.get())
+    arr_gui.append(eleventhentry.get())
+    arr_gui.append(twelvethentry.get())
+    arr_gui.append(thirteenthentry.get())
+
+
+    print(arr_gui)
+
+    f = open("user.txt", "r")
+    lines = f.readlines()
+
+    x=0
+
+    for k in range(40,65,2):
+
+        if (arr_gui[x] != ''):
+            lines[k] =str(arr_gui[x])+'\n'
+
+        x+=1
+
+    f.close()
+
+    lines = ''.join([str(elem) for elem in lines])
+
+
+    f = open("user.txt", "w")
+
+    f.writelines(lines)
+    f.close()
+
+
+
+app = Tk()
+
+app.geometry("1900x1500")
+
+app.title("XFLR5 AUTOMATION")
+
+app.configure(background="#F7F7F7")
+
+heading = Label(text="AIRFOIL ANALYSIS",fg="white",bg="black",font="Helvetica 13 bold italic",width="500",height="3")
+
+heading.pack()
+
+
+img1 = ImageTk.PhotoImage(Image.open('university_logo.png'))
+label=Label(image=img1,bg="#F7F7F7")
+label.pack()
+label.place(x=1700,y=820)
+
+img2 = ImageTk.PhotoImage(Image.open('SAED_logo.jpg'))
+label=Label(image=img2,bg="#F7F7F7")
+label.pack()
+label.place(x=1350,y=870)
+
+
+firstentry_text = Label(text="Do you wish to analyze All Foils(y/n)?")
+secondentry_text = Label(text="Enter the Specific foil name(s)")
+thirdentry_text = Label(text="Enter Reynolds Min value:")
+fourthentry_text =Label(text="Enter Reynolds Max value")
+fifthentry_text =Label(text="Enter Reynolds Increment value")
+sixthentry_text = Label(text="Enter Mach value")
+seventhentry_text = Label(text="Enter NCrit value")
+eighthentry_text = Label(text="Enter Top Transition location(x/c)")
+ninthentry_text = Label(text="Enter Bottem Transition location(x/c)")
+tenthentry_text = Label(text="Specify Alpha or CL (Enter a or c")
+eleventhentry_text = Label(text="Enter Alpha/CL Min value")
+twelvethentry_text = Label(text="Enter Alpha/CL Max value")
+thirteenthentry_text = Label(text="Enter Alpha/CL increment value")
+
+
+firstentry_text.place(x=15,y=110)
+secondentry_text.place(x=15,y=200)
+thirdentry_text.place(x=15,y=290)
+fourthentry_text.place(x=15,y=380)
+fifthentry_text.place(x=15,y=470)
+sixthentry_text.place(x=15,y=560)
+seventhentry_text.place(x=400,y=110)
+eighthentry_text.place(x=400,y=200)
+ninthentry_text.place(x=400,y=290)
+tenthentry_text.place(x=400,y=380)
+eleventhentry_text.place(x=400,y=470)
+twelvethentry_text.place(x=400,y=560)
+thirteenthentry_text.place(x=400,y=650)
+
+
+firstentry = StringVar()
+secondentry = StringVar()
+thirdentry = StringVar()
+fourthentry= StringVar()
+fifthentry= StringVar()
+sixthentry= StringVar()
+seventhentry=StringVar()
+eighthentry=StringVar()
+ninthentry=StringVar()
+tenthentry=StringVar()
+eleventhentry=StringVar()
+twelvethentry=StringVar()
+thirteenthentry=StringVar()
+
+
+
+firstentry_enter = Entry(textvariable=firstentry,width="30")
+secondentry_enter = Entry(textvariable=secondentry,width="30")
+thirdentry_enter = Entry(textvariable=thirdentry,width="30")
+fourthentry_enter = Entry(textvariable=fourthentry,width="30")
+fifthentry_enter = Entry(textvariable=fifthentry,width="30")
+sixthentry_enter = Entry(textvariable=sixthentry,width="30")
+seventhentry_enter= Entry(textvariable=seventhentry,width="30")
+eighthentry_enter= Entry(textvariable=eighthentry,width="30")
+ninthentry_enter= Entry(textvariable=ninthentry,width="30")
+tenthentry_enter= Entry(textvariable=tenthentry,width="30")
+eleventhentry_enter= Entry(textvariable=eleventhentry,width="30")
+twelvethentry_enter= Entry(textvariable=twelvethentry,width="30")
+thirteenthentry_enter= Entry(textvariable=thirteenthentry,width="30")
+
+
+firstentry_enter.place(x=15,y=140)
+secondentry_enter.place(x=15,y=230)
+thirdentry_enter.place(x=15,y=320)
+fourthentry_enter.place(x=15,y=410)
+fifthentry_enter.place(x=15,y=500)
+sixthentry_enter.place(x=15,y=590)
+seventhentry_enter.place(x=400,y=140)
+eighthentry_enter.place(x=400,y=230)
+ninthentry_enter.place(x=400,y=320)
+tenthentry_enter.place(x=400,y=410)
+eleventhentry_enter.place(x=400,y=500)
+twelvethentry_enter.place(x=400,y=590)
+thirteenthentry_enter.place(x=400,y=680)
+
+
+button1 = Button(app,text="Save",command=save_info,width="30",height="2",bg="lightblue")
+button1.place(x=15,y=900)
+
+
+
+
+
+mainloop()
+
+"""------------------------------------------------------X-----------------------------------------------------------"""
+
 
 """-----------------------------------------------INPUT TEXT FILE----------------------------------------------------"""
 
@@ -173,9 +339,5 @@ def analyzefoil():
 analyzefoil()          # Function call
 
 file.close()           # Closing text file
-
-
-
-
 
 
