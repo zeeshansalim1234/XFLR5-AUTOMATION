@@ -75,7 +75,7 @@ def createfoil(i,stopper):
             time.sleep(0.2)
             pg.hotkey('shift','tab')
 
-        pg.hotkey('ctrl','a')                           # To select all files in the directory
+        pg.hotkey('ctrl','a')                          # To select all files in the directory
 
 
         time.sleep(1)
@@ -98,7 +98,7 @@ def createfoil(i,stopper):
         """-------------------------------------NACA FOIL MENU--------------------------------------------------"""
 
         time.sleep(0.5)
-        pg.click(button='right')            # accessing the Naca Foils menu
+        pg.click(button='right')                   # accessing the Naca Foils menu
 
         for k in range(0,3):
 
@@ -130,12 +130,12 @@ def createfoil(i,stopper):
 
 
         time.sleep(0.2)
-        pg.hotkey('fn','F7')             # Open Foil Management
+        pg.hotkey('fn','F7')                               # Open Foil Management
 
         time.sleep(0.2)
         iw = pg.getWindowsWithTitle('Foil Management')     # To Find the window
 
-        iw[0].size=(975,280)               # To assure window is placed at same spot for everyone
+        iw[0].size=(975,280)                               # To assure window is placed at same spot for everyone
         iw[0].topleft=(464,375)
 
         time.sleep(0.2)
@@ -175,7 +175,7 @@ def createfoil(i,stopper):
         time.sleep(0.2)
         fw2 = pg.getWindowsWithTitle('Global Panel Refinement')
 
-        fw2[0].width = 566                # Places the window at same location for all users
+        fw2[0].width = 566                     # Places the window at same location for all users
         fw2[0].height = 326
         fw2[0].topleft = (668, 352)
 
