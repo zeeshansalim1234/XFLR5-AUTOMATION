@@ -46,7 +46,7 @@ def save_info():
 
     print(arr_gui)
 
-    f = open("user.txt", "r")
+    f = open("XFLR5inputs.txt", "r")
     lines = f.readlines()
 
     x=0
@@ -63,7 +63,7 @@ def save_info():
     lines = ''.join([str(elem) for elem in lines])
 
 
-    f = open("user.txt", "w")
+    f = open("XFLR5inputs.txt", "w")
 
     f.writelines(lines)
     f.close()
