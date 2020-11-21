@@ -542,17 +542,16 @@ def planedesign():
 
     """--------------------------------------------Plane inertia---------------------------------------------------- """
 
-    time.sleep(0.5)
+    time.sleep(0.2)
     for i in range(0,14):
         pg.hotkey('shift','tab')
 
     pg.press('space')
 
 
-    time.sleep(1)
+    time.sleep(0.5)
     iw = pg.getWindowsWithTitle('inertia properties')
-
-    time.sleep(1)
+    
     iw[0].size = (613, 825)  # makes sure window is on same position for all users
     iw[0].topleft = (658, 96)
 
@@ -560,13 +559,13 @@ def planedesign():
 
     """---------------------------------------------Main Wing--------------------------------------------------------"""
 
-    time.sleep(0.5)
+    time.sleep(0.2)
     for i in range(0,6):
         pg.hotkey('shift','tab')
 
     pg.press('space')
 
-    time.sleep(1)
+    time.sleep(0.5)
     iw1 = pg.getWindowsWithTitle('inertia properties for Main Wing')
 
     iw1[0].size = (613, 825)  # makes sure window is on same position for all users
@@ -575,7 +574,6 @@ def planedesign():
     for i in range(0,4):
         pg.hotkey('shift','tab')
 
-    time.sleep(0.5)
     pg.typewrite(array_inputs[4])
     pg.press('enter',presses=2)
 
@@ -584,11 +582,11 @@ def planedesign():
 
     """----------------------------------------------Elevator--------------------------------------------------------"""
 
-    time.sleep(0.5)
+    time.sleep(0.2)
     pg.press('tab')
     pg.press('space')
 
-    time.sleep(1)
+    time.sleep(0.5)
     iw2 = pg.getWindowsWithTitle('inertia properties for Elevator')
 
     iw2[0].size = (613, 825)  # makes sure window is on same position for all users
@@ -597,7 +595,6 @@ def planedesign():
     for i in range(0,4):
         pg.hotkey('shift','tab')
 
-    time.sleep(0.5)
     pg.typewrite(array_inputs[5])
     pg.press('enter',presses=2)
 
@@ -606,11 +603,11 @@ def planedesign():
 
     """------------------------------------------------FIN-----------------------------------------------------------"""
 
-    time.sleep(0.5)
+    time.sleep(0.2)
     pg.press('tab')
     pg.press('space')
 
-    time.sleep(1)
+    time.sleep(0.5)
     iw3 = pg.getWindowsWithTitle('inertia properties for Fin')
 
     iw3[0].size = (613, 825)  # makes sure window is on same position for all users
@@ -619,7 +616,6 @@ def planedesign():
     for i in range(0,4):
         pg.hotkey('shift','tab')
 
-    time.sleep(0.5)
     pg.typewrite(array_inputs[6])
     pg.press('enter',presses=2)
 
