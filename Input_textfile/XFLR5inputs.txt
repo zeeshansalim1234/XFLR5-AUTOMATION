@@ -1,6 +1,6 @@
-							1. CREATING AIRFOILS 
+							1. CREATING AIRFOILS
 
-1)Enter the number of airfoils to be created (input in next line):  
+1)Enter the number of airfoils to be created (input in next line):
 3
 2)Enter the NACA Foil numbers seperated by space(4 or 5 Digits):
 0009 0008 2314
@@ -9,7 +9,7 @@
 4)How many Airfoils to be loaded from your PC?
 2
 5)Enter the .dat file path for all your foils you wish to be added in XFLR5 seperated by space:(Save all on Desktop)
-"C:\Users\hp\Desktop\XFLR5automation\Schulic0003.dat" "C:\Users\hp\Desktop\XFLR5automation\Schulich0002.dat" "C:\Users\hp\Desktop\XFLR5automation\Schulic0004.dat" "C:\Users\hp\Desktop\XFLR5automation\Haskyne0003.dat"
+C:\Users\hp\Desktop\Foils
 6)Enter Plane names seperated by space:
 Schulic0003 Schulich0002
 
@@ -208,13 +208,13 @@ n
 19)Enter Extra drag coeff. for EXtra drag table in the following format:
    (Extra0 Extra1 Extra2 Extra3)
 0.0 0.0 0.0 0.0
-20)Sequence ON or OFF(y/n)?
+18)Sequence ON or OFF(y/n)?
 y
-21)Enter Start value:
+19)Enter Start value:
 0
-22)Enter End value:
+20)Enter End value:
 5
-23)Enter increment value:
+21)Enter increment value:
 0.5
 
 
@@ -272,11 +272,11 @@ int
 17)Sequence ON or OFF(y/n)?
 y
 18)Enter Start value:
-10
+0
 19)Enter End value:
-15
-20)Enter increment value:
 5
+20)Enter increment value:
+0.5
 
 
 
@@ -293,7 +293,6 @@ y
 
 
 
-								
 
 
 
