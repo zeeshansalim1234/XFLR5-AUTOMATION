@@ -8,11 +8,11 @@ This is a python based automation script which completely automates all of the f
 
 ## Progress
 
-(1) All the fundamental features have been automated.
+(1) All the fundamental features have been automated and optimized.
 
-(2) Need to test the code for any potential bugs before moving on to the next process.
+(2) GUI has been setup for all modules to facilitate a user frierndly experience.
 
-(3) Need to code the process to facilitate multiple automated iterations.
+(3) coded the process to enable multiple automated iterations.
 
 ## Current features
 
@@ -24,9 +24,9 @@ This is a python based automation script which completely automates all of the f
 
 (4) Create Plane Designs
 
-(5) Setup and Run Flight analysis
+(5) Setup and Run Flight analysis (Multiple iterations possible)
 
-(6) Setup and Run Stability analysis
+(6) Setup and Run Stability analysis (Multiple iterations possible)
 
 ## Requirements
 
@@ -34,7 +34,9 @@ This is a python based automation script which completely automates all of the f
 
 (2) pyautogui package: [DOWNLOAD](https://pypi.org/project/PyAutoGUI/)
 
-(3) Any IDE(recommended): For ease of running the code 
+(3) Tkinter package: [DOWNLOAD](https://docs.python.org/3/library/tkinter.html)
+
+(4) Any IDE(recommended): For ease of running the code 
 
 ## Instructions
 
@@ -42,7 +44,9 @@ This is a python based automation script which completely automates all of the f
   * It is recommended that all the script related files be saved on deskstop for reliable loading of foils from the PC.
 
   ### 2. Input:
-  * Users have to input all the parameters in the text file attached and make sure to save the changes before running the script. 
+  * Users have to input all the parameters in the GUI, this data then gets saved in the textfile which acts as a database for the code.
+  
+  * Alternatively, users can directly enter data in the textfile attached with the code.
   
   * Do not change the orientation of the file by adding or deleting lines between any input (Working to improve this issue).
   
