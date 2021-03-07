@@ -66,21 +66,26 @@ label=Label(image=img2,bg="#F7F7F7")
 label.pack()
 label.place(x=1350,y=870)
 
+img3 = ImageTk.PhotoImage(Image.open('instructions.PNG'))
+label=Label(image=img3,bg="#F7F7F7")
+label.pack()
+label.place(x=900,y=220)
+
 
 firstentry_text = Label(text="Number of airfoils to be created")
-secondentry_text = Label(text="NACA foil number")
-thirdentry_text = Label(text="Nuber of Panels")
+secondentry_text = Label(text="NACA foil number (if more than 1 seperate by space)")
+thirdentry_text = Label(text="Nuber of Panels (if more than 1 seperate by space)")
 fourthentry_text =Label(text="Number of airfoils to be loaded")
 fifthentry_text =Label(text="Address of Foil on PC")
-sixthentry_text = Label(text="Airfoil names")
+sixthentry_text = Label(text="Airfoil name(s) (if more than 1 seperate by space)")
 
 
-firstentry_text.place(x=15,y=110)
-secondentry_text.place(x=15,y=200)
-thirdentry_text.place(x=15,y=290)
-fourthentry_text.place(x=15,y=380)
-fifthentry_text.place(x=15,y=470)
-sixthentry_text.place(x=15,y=560)
+firstentry_text.place(x=155,y=210)
+secondentry_text.place(x=155,y=300)
+thirdentry_text.place(x=155,y=390)
+fourthentry_text.place(x=155,y=480)
+fifthentry_text.place(x=155,y=570)
+sixthentry_text.place(x=155,y=660)
 
 
 firstentry = StringVar()
@@ -99,16 +104,16 @@ fifthentry_enter = Entry(textvariable=fifthentry,width="30")
 sixthentry_enter = Entry(textvariable=sixthentry,width="30")
 
 
-firstentry_enter.place(x=15,y=140)
-secondentry_enter.place(x=15,y=230)
-thirdentry_enter.place(x=15,y=320)
-fourthentry_enter.place(x=15,y=410)
-fifthentry_enter.place(x=15,y=500)
-sixthentry_enter.place(x=15,y=590)
+firstentry_enter.place(x=155,y=240)
+secondentry_enter.place(x=155,y=330)
+thirdentry_enter.place(x=155,y=420)
+fourthentry_enter.place(x=155,y=510)
+fifthentry_enter.place(x=155,y=600)
+sixthentry_enter.place(x=155,y=690)
 
 
 
-button1 = Button(app,text="Save",command=save_info,width="30",height="2",bg="lightblue")
+button1 = Button(app,text="Save",command=save_info,width="30",height="2",bg="orange")
 button1.place(x=15,y=900)
 
 
