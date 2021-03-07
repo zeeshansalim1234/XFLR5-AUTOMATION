@@ -30,6 +30,8 @@ def save_info():
     arr_gui.append(eighteenthentry.get())
     arr_gui.append(nineteenthentry.get())
     arr_gui.append(twenteethentry.get())
+    arr_gui.append(twentyonethentry.get())
+    arr_gui.append(twentysecondentry.get())
 
 
 
@@ -69,7 +71,7 @@ def save_info():
 
         x+=1
 
-    for k in range(272,279,2):
+    for k in range(272,283,2):
 
         if (arr_gui[x] != ''):
             lines[k] =str(arr_gui[x])+'\n'
@@ -111,6 +113,36 @@ label=Label(image=img2,bg="#F7F7F7")
 label.pack()
 label.place(x=1350,y=870)
 
+img3 = ImageTk.PhotoImage(Image.open('stability_menu1.PNG'))
+label=Label(image=img3,bg="#F7F7F7")
+label.pack()
+label.place(x=1005,y=110)
+
+img4 = ImageTk.PhotoImage(Image.open('stability_menu2.PNG'))
+label=Label(image=img4,bg="#F7F7F7")
+label.pack()
+label.place(x=1375,y=110)
+
+img5 = ImageTk.PhotoImage(Image.open('stability_menu3.PNG'))
+label=Label(image=img5,bg="#F7F7F7")
+label.pack()
+label.place(x=1005,y=370)
+
+img6 = ImageTk.PhotoImage(Image.open('stability_menu4.PNG'))
+label=Label(image=img6,bg="#F7F7F7")
+label.pack()
+label.place(x=1375,y=370)
+
+img7 = ImageTk.PhotoImage(Image.open('stability_menu5.PNG'))
+label=Label(image=img7,bg="#F7F7F7")
+label.pack()
+label.place(x=1005,y=630)
+
+img8 = ImageTk.PhotoImage(Image.open('stability_menu6.PNG'))
+label=Label(image=img8,bg="#F7F7F7")
+label.pack()
+label.place(x=1375,y=630)
+
 
 firstentry_text = Label(text="Viscous Anlaysis check box ON in analysis menu(y/n)?")
 secondentry_text = Label(text="Enter Beta value for flight altitude:")
@@ -132,6 +164,8 @@ seventeenthentry_text= Label(text="Sequence ON or OFF(y/n)?")
 eighteenthentry_text= Label(text="Enter Start value:")
 nineteenthentry_text= Label(text="Enter End value:")
 twenteethentry_text= Label(text="Enter increment value:")
+twentyonethentry_text= Label(text="Run analysis on ALL planes?(y/n)",fg="red")
+twentysecondentry_text= Label(text="Enter number of planes currently loaded on XFLR5:",fg="red")
 
 
 firstentry_text.place(x=15,y=110)
@@ -154,6 +188,8 @@ seventeenthentry_text.place(x=560,y=310)
 eighteenthentry_text.place(x=560,y=360)
 nineteenthentry_text.place(x=560,y=410)
 twenteethentry_text.place(x=560,y=460)
+twentyonethentry_text.place(x=560,y=560)
+twentysecondentry_text.place(x=560,y=610)
 
 
 
@@ -177,6 +213,9 @@ seventeenthentry=StringVar()
 eighteenthentry=StringVar()
 nineteenthentry=StringVar()
 twenteethentry=StringVar()
+twentyonethentry=StringVar()
+twentysecondentry=StringVar()
+
 
 
 
@@ -200,6 +239,8 @@ seventeenthentry_enter= Entry(textvariable=seventeenthentry,width="30")
 eighteenthentry_enter= Entry(textvariable=eighteenthentry,width="30")
 nineteenthentry_enter= Entry(textvariable=nineteenthentry,width="30")
 twenteethentry_enter= Entry(textvariable=twenteethentry,width="30")
+twentyonethentry_enter= Entry(textvariable=twentyonethentry,width="30")
+twentysecondentry_enter= Entry(textvariable=twentysecondentry,width="30")
 
 
 
@@ -223,6 +264,8 @@ seventeenthentry_enter.place(x=560,y=340)
 eighteenthentry_enter.place(x=560,y=390)
 nineteenthentry_enter.place(x=560,y=440)
 twenteethentry_enter.place(x=560,y=490)
+twentyonethentry_enter.place(x=560,y=590)
+twentysecondentry_enter.place(x=560,y=640)
 
 
 
@@ -264,7 +307,7 @@ for line in f:
     elif (countline == 268 or countline == 271):
         array_inputs.append(line.strip())
 
-    elif (countline >= 273 and countline <= 279 and countline % 2 != 0):
+    elif (countline >= 273 and countline <= 283 and countline % 2 != 0):
         array_inputs.append(line.strip())
 
 for i in range(8, 16):
@@ -431,7 +474,8 @@ def stabilityanalysis():
     pg.typewrite(array_inputs[10][1])
 
     time.sleep(0.2)
-    pg.press('enter', presses=2)
+    pg.typewrite(['enter'])
+    pg.typewrite(['enter'])
     pg.press('tab', presses=2)
 
     """---------------------------------------------------X----------------------------------------------------------"""
@@ -490,6 +534,9 @@ def stabilityanalysis():
     """---------------------------------------------------X----------------------------------------------------------"""
 
     """-------------------------------------------PlANE ANALYSIS MENU------------------------------------------------"""
+
+    time.sleep(0.5)
+    pg.typewrite(['esc'])   #in-case overwrite pops up
 
     time.sleep(1)
     fw1 = pg.getWindowsWithTitle("Plane analysis")
@@ -550,6 +597,26 @@ def stabilityanalysis():
             pg.typewrite(['space'])
 
 
+    time.sleep(5)
+
+
 """----------------------------------------------END OF FUNCTION-----------------------------------------------------"""
 
-stabilityanalysis()
+if(array_inputs[20]=='n'):
+
+    stabilityanalysis()
+
+elif(array_inputs[20]=='y'):
+
+    for i in range(0, int(array_inputs[21])):
+
+        time.sleep(1)
+        pg.typewrite(['F7'])
+        time.sleep(1)
+        pg.press('up',presses=(int(array_inputs[21])+1))
+        pg.press('down',presses=i)
+        pg.typewrite(['enter'])
+        pg.typewrite(['enter'])
+        print("bye")
+        stabilityanalysis()
+
