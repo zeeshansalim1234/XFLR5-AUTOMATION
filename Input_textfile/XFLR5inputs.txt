@@ -56,7 +56,7 @@ y
 9)Enter Bottem Transition location(x/c):
 1.00
 8)Specify Alpha or CL (Enter a or c)?
-c
+a
 9)Enter Alpha/CL Min value:
 -5
 10)Enter Alpha/CL Max value:
@@ -84,13 +84,13 @@ c
 3)Enter the number of columns required to fill Fin Details(2/3/4):
 2
 4)Enter a name for the Plane:
-NightHawk
+Schulich0002
 5)Enter Mass for Main Wing (Plane inertia menu):
 20
 6)Enter Mass for Elevator (Plane inertia menu):
-0
+5
 7)Enter Mass for Fin  (Plane inertia menu):
-0
+6
 8)Enter x for Elevator:
 1.910
 9)Enter z for Elevator:
@@ -167,7 +167,7 @@ NightHawk
 						         4. FLIGHT ANALYSIS
 
 1)Choose Type of analysis? (Enter 1/2/4/5):
-4
+2
 2)Enter Free Stream Speed:(Option depends on your choosen Type)		//Ignore if not required
 10
 3)Enter alpha:(Option depends on your choosen Type)			//Ignore if not required
@@ -216,10 +216,10 @@ y
 5
 21)Enter increment value:
 0.5
-
-
-
-
+22)Do you wish to run this on all planes ?(y/n)
+n
+23)How many planes are currently loaded on XFLR5?
+3
 
 
 
@@ -233,7 +233,7 @@ y
 								5. STABILITY ANALYSIS
 
 1)Viscous Anlaysis check box ON in analysis menu(y/n)?
-n
+y
 2)Enter Beta value for flight altitude:
 0.0
 3)Enter Phi value for flight altitude:
@@ -272,12 +272,15 @@ int
 17)Sequence ON or OFF(y/n)?
 y
 18)Enter Start value:
-0
-19)Enter End value:
-5
-20)Enter increment value:
 0.5
-
+19)Enter End value:
+2
+20)Enter increment value:
+5
+21)Do you wish to run this on all planes ?(y/n)
+n
+22)How many planes are currently loaded on XFLR5?
+2
 
 
 
