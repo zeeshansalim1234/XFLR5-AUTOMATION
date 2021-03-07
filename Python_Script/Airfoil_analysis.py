@@ -93,9 +93,14 @@ label=Label(image=img2,bg="#F7F7F7")
 label.pack()
 label.place(x=1350,y=870)
 
+img3 = ImageTk.PhotoImage(Image.open('multi_analysis_menu.png'))
+label=Label(image=img3,bg="#F7F7F7")
+label.pack()
+label.place(x=900,y=200)
+
 
 firstentry_text = Label(text="Do you wish to analyze All Foils(y/n)?")
-secondentry_text = Label(text="Enter the Specific foil name(s)")
+secondentry_text = Label(text="Enter the Specific foil name(s) (seperate by space)")
 thirdentry_text = Label(text="Enter Reynolds Min value:")
 fourthentry_text =Label(text="Enter Reynolds Max value")
 fifthentry_text =Label(text="Enter Reynolds Increment value")
@@ -103,7 +108,7 @@ sixthentry_text = Label(text="Enter Mach value")
 seventhentry_text = Label(text="Enter NCrit value")
 eighthentry_text = Label(text="Enter Top Transition location(x/c)")
 ninthentry_text = Label(text="Enter Bottem Transition location(x/c)")
-tenthentry_text = Label(text="Specify Alpha or CL (Enter a or c")
+tenthentry_text = Label(text="Specify Alpha or CL (Enter a or c)")
 eleventhentry_text = Label(text="Enter Alpha/CL Min value")
 twelvethentry_text = Label(text="Enter Alpha/CL Max value")
 thirteenthentry_text = Label(text="Enter Alpha/CL increment value")
@@ -170,7 +175,7 @@ twelvethentry_enter.place(x=400,y=590)
 thirteenthentry_enter.place(x=400,y=680)
 
 
-button1 = Button(app,text="Save",command=save_info,width="30",height="2",bg="lightblue")
+button1 = Button(app,text="Save",command=save_info,width="30",height="2",bg="orange")
 button1.place(x=15,y=900)
 
 
@@ -262,6 +267,7 @@ def analyzefoil():
     pg.typewrite(['escape'])
     pg.typewrite(['space'])
 
+    time.sleep(1)
     fw1 = pg.getWindowsWithTitle('Foil Selection')
 
     fw1[0].size = (408, 431)
