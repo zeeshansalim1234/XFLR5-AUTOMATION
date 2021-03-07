@@ -36,6 +36,8 @@ def save_info():
     arr_gui.append(twentysecondentry.get())
     arr_gui.append(twentythirdentry.get())
     arr_gui.append(twentyfourthentry.get())
+    arr_gui.append(twentyfifthentry.get())
+    arr_gui.append(twentysixthentry.get())
 
 
 
@@ -60,7 +62,7 @@ def save_info():
 
         x+=1
 
-    for k in range(211, 218, 2):
+    for k in range(211, 222, 2):
 
         if (arr_gui[x] != ''):
             lines[k] = str(arr_gui[x]) + '\n'
@@ -147,7 +149,7 @@ tenthentry_text = Label(text="Select Wing Platform projected on xy plane ")
 eleventhentry_text = Label(text="Enter Ref. area (Only if you chose User defined):")
 twelvethentry_text = Label(text="Enter Ref. span length (Only if you chose User defined):")
 thirteenthentry_text = Label(text="Enter Ref. cord length (Only if you chose User defined)")
-fourteenthentry_text = Label(text="Choose international or imperial for Aero Data menu (enter int or imp):")
+fourteenthentry_text = Label(text="Choose international or imperial for Air Data menu(enter int or imp):")
 fifteenthentry_text= Label(text="Enter value of Rho (kg/m^3):")
 sixteenthentry_text= Label(text="Enter value of Mu in scientific notation (ex: 1.5e-5):")
 seventeenthentry_text= Label(text="Ground effect checkbox ON in aero data menu (y or n)?")
@@ -158,6 +160,8 @@ twentyonethentry_text= Label(text="Sequence ON or OFF(y/n)?")
 twentysecondentry_text= Label(text="Enter Start value:")
 twentythirdentry_text= Label(text="Enter End value:")
 twentyfourthentry_text= Label(text="Enter increment value:")
+twentyfifthentry_text= Label(text="Run analysis on ALL planes?(y/n)",fg="red")
+twentysixthentry_text= Label(text="Enter number of planes currently loaded on XFLR5:",fg="red")
 
 firstentry_text.place(x=15,y=110)
 secondentry_text.place(x=15,y=160)
@@ -183,6 +187,8 @@ twentyonethentry_text.place(x=560,y=460)
 twentysecondentry_text.place(x=560,y=510)
 twentythirdentry_text.place(x=560,y=560)
 twentyfourthentry_text.place(x=560,y=610)
+twentyfifthentry_text.place(x=560,y=710)
+twentysixthentry_text.place(x=560,y=760)
 
 
 
@@ -210,6 +216,8 @@ twentyonethentry=StringVar()
 twentysecondentry=StringVar()
 twentythirdentry=StringVar()
 twentyfourthentry=StringVar()
+twentyfifthentry=StringVar()
+twentysixthentry=StringVar()
 
 
 
@@ -237,6 +245,8 @@ twentyonethentry_enter= Entry(textvariable=twentyonethentry,width="30")
 twentysecondentry_enter= Entry(textvariable=twentysecondentry,width="30")
 twentythirdentry_enter= Entry(textvariable=twentythirdentry,width="30")
 twentyfourthentry_enter= Entry(textvariable=twentyfourthentry,width="30")
+twentyfifthentry_enter= Entry(textvariable=twentyfifthentry,width="30")
+twentysixthentry_enter= Entry(textvariable=twentysixthentry,width="30")
 
 
 firstentry_enter.place(x=15,y=140)
@@ -263,6 +273,8 @@ twentyonethentry_enter.place(x=560,y=490)
 twentysecondentry_enter.place(x=560,y=540)
 twentythirdentry_enter.place(x=560,y=590)
 twentyfourthentry_enter.place(x=560,y=640)
+twentyfifthentry_enter.place(x=560,y=740)
+twentysixthentry_enter.place(x=560,y=790)
 
 
 button1 = Button(app,text="Save",command=save_info,width="30",height="2",bg="orange")
@@ -294,7 +306,7 @@ for line in f:
     elif (countline==207 or countline==210):
         array_inputs.append(line.strip())
 
-    elif (countline>=212 and countline <=218 and countline %2 == 0):
+    elif (countline>=212 and countline <=222 and countline %2 == 0):
         array_inputs.append(line.strip())
 
 for i in range(18,20):
@@ -314,7 +326,7 @@ def planeanalysis():
     time.sleep(1)
 
 
-    pg.hotkey('Fn','F6')
+    pg.press('F6')
 
     time.sleep(0.2)
     fw = pg.getWindowsWithTitle("Analysis Definition")
@@ -536,12 +548,17 @@ def planeanalysis():
         pg.press('tab')
         pg.press('up', presses=3)
 
-    pg.press('enter', presses=3)
+    pg.typewrite(['enter'])
+    pg.typewrite(['enter'])
+    pg.typewrite(['enter'])
 
 
     """---------------------------------------------------X----------------------------------------------------------"""
 
     """-------------------------------------------PLANE ANALYSIS MENU------------------------------------------------"""
+
+    time.sleep(0.5)
+    pg.typewrite(['esc'])  # in-case overwrite pops up
 
     time.sleep(1)
     fw1 = pg.getWindowsWithTitle("Plane analysis")
@@ -594,10 +611,27 @@ def planeanalysis():
             pg.press('tab', presses=3)
             pg.typewrite(['space'])
 
-
+    time.sleep(5)
 
 """-----------------------------------------------END OF FUNCTION----------------------------------------------------"""
 
-planeanalysis()
+
+if(array_inputs[24]=='n'):
+
+    planeanalysis()
+
+elif(array_inputs[24]=='y'):
+
+    for i in range(0, int(array_inputs[25])):
+
+        time.sleep(1)
+        pg.press('F7')
+        time.sleep(1)
+        pg.press('up',presses=(int(array_inputs[25])+1))
+        pg.press('down',presses=i)
+        pg.typewrite(['enter'])
+        pg.typewrite(['enter'])
+        planeanalysis()
+
 
 file.close()
